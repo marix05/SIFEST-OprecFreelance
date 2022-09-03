@@ -1,0 +1,114 @@
+section.timeline .container .timeline_container {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  position: relative;
+}
+section.timeline .container .timeline_container::before {
+  content: " ";
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background: var(--black-color);
+  left: calc(50% - 1px);
+}
+section.timeline .container .timeline_item {
+  margin-bottom: 2.5rem;
+  width: 100%;
+  position: relative;
+}
+section.timeline .container .timeline_item:last-child {
+  margin-bottom: 0;
+}
+section.timeline .container .timeline_item:nth-child(odd) {
+  padding-right: calc(50% + 2.5rem);
+  text-align: right;
+}
+section.timeline .container .timeline_item:nth-child(even) {
+  padding-left: calc(50% + 2.5rem);
+  text-align: left;
+}
+section.timeline .container .timeline_dot {
+  height: 1rem;
+  width: 1rem;
+  position: absolute;
+  background: var(--red-color);
+  left: calc(50% - 0.5rem);
+  border-radius: 50%;
+}
+section.timeline .container .box_lt_rb_side {
+  --corner: 1.5rem;
+}
+section.timeline .container .timeline_content {
+  padding: 1.5rem;
+}
+section.timeline .container .timeline_date {
+  margin-bottom: 0.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  section.timeline .container .timeline_container {
+    max-width: 600px;
+  }
+  section.timeline .container .timeline_container::before {
+    left: 0.5rem;
+  }
+  section.timeline .container .timeline_item:last-child {
+    margin-bottom: 0;
+  }
+  section.timeline .container .timeline_item:nth-child(odd) {
+    padding-right: 0;
+    padding-left: 2rem;
+    text-align: left;
+  }
+  section.timeline .container .timeline_item:nth-child(even) {
+    padding-left: 2rem;
+    text-align: left;
+  }
+  section.timeline .container .timeline_dot {
+    left: 0;
+  }
+}
+section.dashboard .container .box_rt_lb_side {
+  margin: auto;
+  max-width: 600px;
+  width: 100%;
+}
+
+.info_navs {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1rem;
+  row-gap: 0.5rem;
+}
+.info_navs .info_nav {
+  padding: 4px 1rem;
+  max-width: 31%;
+  width: 100%;
+  text-align: center;
+  color: var(--main-color);
+  background: var(--darkgrey-color);
+  transition: 0.5s ease;
+}
+.info_navs .info_nav.active {
+  background: var(--red-color);
+}
+
+@media only screen and (max-width: 576px) {
+  .info_navs {
+    gap: 0.5rem;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .info_navs .info_nav {
+    max-width: unset;
+  }
+}
+.info_tabs .info_tab {
+  display: none;
+}
+.info_tabs .info_tab.active {
+  display: block;
+}/*# sourceMappingURL=dashboard.css.map */

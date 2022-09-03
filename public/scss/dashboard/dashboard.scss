@@ -1,0 +1,57 @@
+@use "../assets/timeline";
+
+section.dashboard {
+    .container {
+        .box_rt_lb_side {
+            margin: auto;
+            max-width: 600px;
+            width: 100%;
+        }
+    }
+}
+
+.info_navs {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1rem;
+    row-gap: 0.5rem;
+
+    .info_nav {
+        padding: 4px 1rem;
+        max-width: 31%;
+        width: 100%;
+        text-align: center;
+        color: var(--main-color);
+        background: var(--darkgrey-color);
+        transition: 0.5s ease;
+    }
+
+    .info_nav.active {
+        background: var(--red-color);
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .info_navs {
+        gap: 0.5rem;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .info_navs {
+        .info_nav {
+            max-width: unset;
+        }
+    }
+}
+
+.info_tabs {
+    .info_tab {
+        display: none;
+    }
+
+    .info_tab.active {
+        display: block;
+    }
+}

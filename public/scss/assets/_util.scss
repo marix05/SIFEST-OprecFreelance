@@ -1,0 +1,65 @@
+:root {
+    /*======== Color =========*/
+    --main-color: #f0ece1;
+    --black-color: #030403;
+    --red-color: #cf0633;
+    --darkgrey-color: #40403e;
+    --lightgrey-color: #e1ded6;
+    // --lightgrey-color: #b2aaa6;c
+
+    --shadow-black: #030403cc;
+
+    --gradient-trans-black-red: linear-gradient(
+        135deg,
+        transparent 5%,
+        var(--black-color) 25%,
+        var(--red-color) 75%,
+        transparent 95%
+    );
+
+    /*======== Typography ========*/
+
+    // Font Size
+    --big-font-size: 2.6rem;
+    --h1-font-size: 2rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.2rem;
+    --normal-font-size: 0.9rem;
+    --small-font-size: 0.75rem;
+    --smaller-font-size: 0.6rem;
+
+    // Font weight
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+
+    // z-index
+    --index-max: 100;
+    --index-med: 75;
+    --index-mid: 50;
+    --index-min: 25;
+}
+
+@media screen and (max-width: 400px) {
+    :root {
+        --big-font-size: 9.11111111vw;
+        --h1-font-size: 7.999999999vw;
+        --h2-font-size: 6.222222222vw;
+        --h3-font-size: 5.222222222vw;
+        --normal-font-size: 3.9999999vw;
+        --small-font-size: 3.44444444vw;
+        --smaller-font-size: 2.888889vw;
+    }
+}
+
+@media screen and (min-width: 997px) {
+    :root {
+        --big-font-size: 3rem;
+        --h1-font-size: 2.4rem;
+        --h2-font-size: 1.9rem;
+        --h3-font-size: 1.5rem;
+        --normal-font-size: 1rem;
+        --small-font-size: 0.9rem;
+        --smaller-font-size: 0.8rem;
+    }
+}

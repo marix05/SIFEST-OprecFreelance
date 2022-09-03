@@ -1,0 +1,11 @@
+@use "../assets/form";
+@use "../assets/timeline";
+@use "../assets/faq";
+
+section.register {
+    .wrapper {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+}
