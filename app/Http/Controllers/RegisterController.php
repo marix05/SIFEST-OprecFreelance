@@ -6,56 +6,61 @@ use App\Models\User;
 use App\Models\Regency;
 use App\Models\Province;
 use Illuminate\Http\Request;
+use App\Models\Mahasiswa2022;
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
 
 class RegisterController extends Controller
-{
+{    
     public function index() {
         
-        $provinces = Province::all();
-        $regencies = Regency::all();
-        
+        $NIM = request()->session()->get('NIM');
+        $mahasiswa = Mahasiswa2022::getData($NIM);
+
         $data = [
-            "title" => "Oprec Freelance | SI FEST",
+            "title" => "Registration Freelance | SI FEST",
             "nav" => [
                 "active" => 'Register', 
             ],
+            "mahasiswa" => [
+                "name" => ucwords(strtolower($mahasiswa['name'])),
+                "NIM" => $mahasiswa['NIM'],
+            ],
         ];
 
-        return view("web/register/index", $data, compact("provinces", "regencies"));
+        return view("web/register/index", $data);
     }
 
     public function store(Request $request) {
 
         $request->validate([
-            "name" => ['required', 'string', 'max:60'],
-            "NIM" => ['required', 'numeric', 'unique:users'],
+            "name" => ['string', 'max:60'],
+            "NIM" => ['numeric', 'unique:users'],
             "email" => ['required', 'string', 'email:dns', 'unique:users', 'max:60'],
             "line" => ['required', 'string', 'max:30'],
             "class" => ['required', 'string'],
             'domicile' => ['required', 'string'],
             "first_choice" => ['required', 'string'],
-            "first_reason" => ['required', 'max:1000', 'min:25'],
+            "first_reason" => ['required', 'max:1000', 'min:5'],
             "second_choice" => ['required', 'string'],
-            "second_reason" => ['required', 'max:1000', 'min:25'],
+            "second_reason" => ['required', 'max:1000', 'min:5'],
             "password" => [
                 'required',
                 'confirmed',
                 Password::defaults(),
             ],
             "password_confirmation" => ["required"],
-            "wawancara" => ['required', 'string'],
-            "identifier" => ['required', "file","image", 'mimes:jpeg,png,jpg,gif,svg', "max:2048"]
+            "interview" => ['required', 'string'],
+            "identifier" => ['required', "image", 'mimes:jpeg,png,jpg,gif,svg', "max:2048"]
         ]);
 
         if($request->file('identifier')){
             $file = $request->file('identifier');
-            $filename = $file->getClientOriginalName();
-            $file->move(public_path('../../public/img/post'), $filename);
+            $filename = date('YmdHi').".".$file->getClientOriginalName();
+            $file->move(public_path('KRS_KPM'), $filename);
             
             $user = new User([
                 'name' => $request->name,
@@ -63,19 +68,26 @@ class RegisterController extends Controller
                 'email' => $request->email,
                 'line' => $request->line,
                 'class' => $request->class,
-                'domicilie' => $request->domicilie,
+                'domicile' => $request->domicile,
                 'first_choice' => $request->first_choice,
                 'first_reason' => $request->first_reason,
                 'second_choice' => $request->second_choice,
                 'second_reason' => $request->second_reason,
                 'password' => Hash::make($request->password),
-                'wawancara' => $request->wanwancara,
+                'interview' => $request->interview,
                 "identifier" => $filename,
             ]);
-    
+            
             $user->save();
 
-            return redirect()->route("dashboard")->with("success", "Registration is successful, please read the information");
+            if(Auth::attempt([
+                "NIM" => $request->NIM, 
+                "password" => $request->password,
+            ])){
+                $request->session()->regenerate();
+                return redirect()->intended('/dashboard')->with("success", "Registration is successful, please read the information");
+            };
+
         }
         
         return back()->with("error", "Registration failed, try again");

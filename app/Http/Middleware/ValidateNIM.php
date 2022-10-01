@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -17,9 +18,16 @@ class ValidateNIM
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Session::get('NIM')) {
+        $NIM = Session::get('NIM');
+        if (User::checkData($NIM)) {
+            Session::forget('NIM');;
+            return redirect()->route('login')->with("error", "Your NIM is already registered, please login");
+        }
+        
+        if (!$NIM) {
             return redirect()->route('home');
-        }  
+        }
+        
         return $next($request);
         
     }

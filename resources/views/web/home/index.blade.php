@@ -16,12 +16,17 @@
                 <i class="fa-solid fa-xmark alert_toggle"></i>
             </div>
         @endif
-        {{-- <img src="{{ asset("img/asset_web/section_frames.png") }}" alt="" style="position: absolute; top:0; left:0;">
-        <img src="{{ asset("img/asset_web/section_frames.png") }}" alt="" style="position: absolute; bottom:0; transform:rotate(-180deg); right:0;"> --}}
+
         <div class="container p_relative py20">
-            <div class="title_font text_center mb12">
-                <p class="text_big">Open Recruitment</p>
-                <p><span class="fc_red">Freelance SI Fest 2022</span>, Join Now !</p>
+            <div class="title_font text_center mb8">
+                {{-- <p class="text_big">Open Recruitment</p>
+                <p><span class="fc_red">Freelance SI Fest 2022</span>, Join Now !</p> --}}
+                <p class="text_big">Recruitment Closed</p>
+                <p><span class="fc_red">Thank You For All Participants</span>, SI FEST 2022</p>
+            </div>
+            <div class="logo text_center mb4">
+                <img src="{{ asset("../../img/assets/logo_unsri.png") }}" alt="">
+                <img src="{{ asset("../../img/assets/logo_himsi.png") }}" alt="">
             </div>
             <div class="form_wrapper box_lt_rb_side p6">
                 <i class="box_lt_rb_side_design"></i>
@@ -56,14 +61,36 @@
                         </button>
                     </div>
                 </form>
-                <p class="text_sm">
-                    Bingung mau daftar ke divisi apa?
-                    <a href="https://bit.ly/DIVISISIFEST2022" class="fw_bold fc_red" target="_blank">
-                        Cari info terkait divisi-divisi yang ada yuk!
-                    </a>
-                </p>
+                <div>
+                    <p class="text_sm text_center">
+                        Already registered?
+                        <a href="{{ route("login") }}" class="fw_bold fc_red">
+                            Login
+                        </a>
+                    </p>
+                    <hr class="my2">
+                    <p class="text_sm text_center">
+                        Bingung mau daftar ke divisi apa?
+                        <a href="https://bit.ly/DivisiSIFEST2022" class="fw_bold fc_red" style="text-decoration: underline !important" target="_blank">
+                            Pahami lebih lanjut terkait divisi-divisi yang ada yuk!
+                        </a>
+                    </p>
+                </div>
+                {{-- <div>
+                    <p class="text_center fw_bold mb4">
+                        Already registered?
+                    </p>
+                    <div class="btn_container pb2">
+                        <a href="{{ route("login") }}" class="btn_right text_center" style="width:100%">
+                            <i class="btn_right_design"></i> Login 
+                        </a>
+                    </div>
+                </div> --}}
             </div>
         </div>
+        <a href="#timeline" class="nav_arrow px4 py2">
+            <i class="fa-sharp fa-solid fa-arrow-down text_h2"></i>
+        </a>
     </div>
 </section>
 
@@ -74,11 +101,11 @@
             <div class="timeline_container">
                 <div class="timeline_item">
                     <div class="timeline_dot"></div>
-                    <div class="timeline_date fc_red">03 Sep 2022 - 12 Sep 2022</div>
+                    <div class="timeline_date fc_red">04 Sep 2022 - 12 Sep 2022</div>
                     <div class="timeline_content box_lt_rb_side">
                         <i class="box_lt_rb_side_design"></i>
                         <span class="title_font">Pendaftaran</span>
-                        <p class="text_sm">Pendaftaran dibuka untuk mahasiswa sistem informasi 2022 Fasilkom UNSRI</p>
+                        <p class="text_sm">Pendaftaran dibuka untuk seluruh mahasiswa/i Sistem Informasi Fasilkom Universitas Sriwijaya angkatan 2022</p>
                     </div>
                 </div>
                 <div class="timeline_item">
@@ -87,12 +114,12 @@
                     <div class="timeline_content box_lt_rb_side">
                         <i class="box_lt_rb_side_design"></i>
                         <span class="title_font">Wawancara</span>
-                        <p class="text_sm">Wawancara dilakukan pada dua tempat yaitu, fasilkom Indralaya dan fasilkom unsri</p>
+                        <p class="text_sm">Wawancara dilakukan pada dua tempat yaitu, Fasilkom Indralaya dan Fasilkom Bukit Universitas Sriwijaya</p>
                     </div>
                 </div>
                 <div class="timeline_item">
                     <div class="timeline_dot"></div>
-                    <div class="timeline_date fc_red">28 September</div>
+                    <div class="timeline_date fc_red">28 September 2022</div>
                     <div class="timeline_content box_lt_rb_side">
                         <i class="box_lt_rb_side_design"></i>
                         <span class="title_font">Pengumuman Frelance 2022</span>
@@ -172,7 +199,7 @@
                             <span>Saya melakukan kesalahan dalam mengisi data saya, bagaimana cara agar saya dapat memperbaiki data yang saya kirimkan</span>
                         </div>
                         <div class="card_body text_sm pt2 pl5">
-                            Sayangnya kamu tidak bisa mengubah data kamu sendiri ya, tapi ada admin yang siap membantu kamu. Silahkan hubungi admin melalui <a href="" class="fc_red">link berikut</a> 
+                            Sayangnya kamu tidak bisa mengubah data kamu sendiri ya, tapi ada admin yang siap membantu kamu. Silahkan hubungi admin melalui <a href="https://line.me/ti/p/hYjbvAmsSd" target="_blank" class="fc_red">link berikut</a> 
                         </div>
                     </div>
                 </div>

@@ -105,7 +105,7 @@
                                 Klik atau scan QR code dibawah untuk bergabung kedalam Grup LINE
                             </p>
                             <p class="text_center">
-                                <a href="https://line.me/R/ti/g/pryuaYa20z" target="_blank" style="text-decoration:underline !important">
+                                <a href="https://line.me/R/ti/g/pryuaYa20z" target="_blank">
                                     <img src="{{ asset("img/assets/qr_oprec_line.png") }}" alt="" style="max-width:250px">
                                 </a>
                             </p>
@@ -116,7 +116,7 @@
                                 Klik atau scan QR code dibawah untuk terhubung dengan admin
                             </p>
                             <p class="text_center">
-                                <a href="https://line.me/R/ti/g/pryuaYa20z" target="_blank" style="text-decoration:underline !important">
+                                <a href="https://line.me/ti/p/hYjbvAmsSd" target="_blank">
                                     <img src="{{ asset("img/assets/qr_admin.png") }}" alt="" style="max-width:250px">
                                 </a>
                             </p>
@@ -129,3 +129,112 @@
 </section>
 
 @endsection
+
+{{-- @extends('layouts/web.main')
+
+@section('index')
+
+<section class="dashboard" id="dashboard" style="min-height: 100vh; display:flex; align-items:center">
+    <div class="wrapper">
+        @if(session()->has("success"))
+            <div class="alert success">
+                <p class="alert_msg">{{ session("success") }}</p>
+                <i class="fa-solid fa-xmark alert_toggle"></i>
+            </div>
+        @endif
+        @if(session()->has("error"))
+            <div class="alert error">
+                <p class="alert_msg">{{ session("error") }}</p>
+                <i class="fa-solid fa-xmark alert_toggle"></i>
+            </div>
+        @endif
+        
+        @if (Auth::user()->result)
+            <div class="container p_relative py20">
+                <div class="title_font text_center mb16">
+                    <p class="text_big">Selamat !!!</p>
+                    <p class="fc_red">Kamu Dinyatakan Lulus Menjadi Freelance SI FEST 2022</p>
+                </div>
+
+                <div class="box_rt_lb_side ease2 px6 py8">
+                    <i class="box_rt_lb_side_design"></i>
+                    <div>
+                        Melalui pesan ini <b class="fc_red">{{ Auth::user()->name }}</b>
+                        dinyatakan <b class="fc_red">lulus</b> menjadi Freelance SI FEST 2022 di divisi <b class="fc_red">{{ Auth::user()->result }}</b>.
+                        Jangan lupakan komitmen dan tanggung jawab anda. Untuk informasi selanjutnya silahkan bergabung ke grup divisi anda, 
+
+                        @if (Auth::user()->result == "Competition")
+                            <a href="https://line.me/R/ti/g/086_xj6sz_" target="_blank" class="fc_red fw_bold" style="text-decoration: underline !important">
+                                Grup Competition
+                            </a>
+                        @elseif (Auth::user()->result == "Seminar")
+                            <a href="http://line.me/ti/g/s2ASSnOaWC" target="_blank" class="fc_red fw_bold" style="text-decoration: underline !important">
+                                Grup Seminar
+                            </a>
+                        @elseif (Auth::user()->result == "Buddies")
+                            <a href="https://line.me/R/ti/g/G3XBnSfDh-" target="_blank" class="fc_red fw_bold" style="text-decoration: underline !important">
+                                Grup Buddies
+                            </a>
+                        @elseif (Auth::user()->result == "Sponsorship")
+                            <a href="https://line.me/R/ti/g/xHcp0ascvv" target="_blank" class="fc_red fw_bold" style="text-decoration: underline !important">
+                                Grup Sponsorship
+                            </a>
+                        @elseif (Auth::user()->result == "Media Partner")
+                            <a href="http://line.me/ti/g/MmkwTI1n1a" target="_blank" class="fc_red fw_bold" style="text-decoration: underline !important">
+                                Grup Media Partner
+                            </a>
+                        @elseif (Auth::user()->result == "Marketing")
+                            <a href="https://line.me/R/ti/g/Joo4gXE9rR" target="_blank" class="fc_red fw_bold" style="text-decoration: underline !important">
+                                Grup Marketing
+                            </a>
+                        @elseif (Auth::user()->result == "Design")
+                            <a href="https://line.me/R/ti/g/5rMhuH-YWx" target="_blank" class="fc_red fw_bold" style="text-decoration: underline !important">
+                                Grup Design
+                            </a>
+                        @elseif (Auth::user()->result == "Videography Photography")
+                            <a href="https://line.me/R/ti/g/vlw0u6nstK" target="_blank" class="fc_red fw_bold" style="text-decoration: underline !important">
+                                Grup Videography Photography
+                            </a>    
+                        @elseif (Auth::user()->result == "Publication")
+                            <a href="http://line.me/ti/g/lWrWQatczl" target="_blank" class="fc_red fw_bold" style="text-decoration: underline !important">
+                                Grup Publication
+                            </a>
+                        @elseif (Auth::user()->result == "Bazaar")
+                            <a href="https://line.me/ti/g/cw-FbpwfYz" target="_blank" class="fc_red fw_bold" style="text-decoration: underline !important">
+                                Grup Bazaar
+                            </a>
+                        @elseif (Auth::user()->result == "Consumption")
+                            <a href="https://line.me/R/ti/g/TmHKotDTct" target="_blank" class="fc_red fw_bold" style="text-decoration: underline !important">
+                                Grup Consumption
+                            </a>
+                        @elseif (Auth::user()->result == "Equipment")
+                            <a href="https://line.me/ti/g/dwZN_trct5" target="_blank" class="fc_red fw_bold" style="text-decoration: underline !important">
+                                Grup Equipment
+                            </a>
+                        @endif
+                        
+                    </div>
+                </div>
+            </div>
+        @else 
+            <div class="container p_relative py20 fc_red">
+                <div class="title_font text_center mb16">
+                    <p class="text_big">Mohon Maaf</p>
+                    <p class="fc_black">Kamu Dinyatakan Tidak Lulus menjadi Freelance SI FEST 2022</p>
+                </div>
+
+                <div class="box_rt_lb_side ease2 px6 py8">
+                    <i class="box_rt_lb_side_design"></i>
+                    <div>
+                        Melalui pesan ini, dengan berat hati <b>{{ Auth::user()->name }}</b>
+                        dinyatakan <b>tidak lulus</b> menjadi Freelance SI FEST 2022. 
+                        <b>Jangan putus asa dan tetap semangat! Persiapkan diri anda, kami tunggu di oprec HIMSI 2023 !. </b>
+                    </div>
+                </div>
+            </div>
+        @endif
+
+    </div>
+</section>
+
+@endsection --}}

@@ -24,7 +24,7 @@ class User extends Authenticatable
         'line',
         'class',
         'password',
-        'domicilie',
+        'domicile',
         'first_choice',
         'first_reason',
         'second_choice',
@@ -52,4 +52,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function checkData($NIM) {
+        if (User::where('NIM', '=', $NIM)->exists()) {
+            return true;
+        } return false;
+    }
+    
+    public static function getData($NIM) {
+        if (User::where('NIM', '=', $NIM)->exists()) {
+            return User::where('NIM',"=", $NIM)->first();
+        } return "";
+    }
 }

@@ -41,7 +41,7 @@
                                     </div> 
                                     <div class="input_div">
                                         <p class="input_title title_font">Full Name</p>
-                                        <input type="text" name="name" id="name" value="{{ old("name") }}" class="input" required maxlength="60">
+                                        <input type="text" name="name" id="name" value="{{ $mahasiswa['name'] }}" class="input" required maxlength="60" readonly>
                                     </div>
                                 </div>
                                 @error('name')
@@ -60,7 +60,7 @@
                                     </div> 
                                     <div class="input_div">
                                         <p class="input_title title_font">Student ID (NIM)</p>
-                                        <input type="text" name="NIM" id="NIM" value="{{ old("NIM") }}" class="input" required maxlength="14" minlength="14">
+                                        <input type="text" name="NIM" id="NIM" value="{{ $mahasiswa['NIM'] }}" class="input" required maxlength="14" minlength="14" readonly>
                                     </div>
                                 </div>
                                 @error('NIM')
@@ -139,7 +139,7 @@
                             <!-- Domisili -->
 
                             <p class="title_font text_h3 mt8 mb2">
-                                Domicilie
+                                Domicile
                             </p>
 
                             <div class="input_wrapper">
@@ -329,7 +329,7 @@
                                     </div> 
                                     <div class="input_div">
                                         <p class="input_title title_font">KPM/KRS</p>
-                                        <input type="file" accept=".jpg, .jpeg, .png" name="identifier" id="identifier" required>
+                                        <input type="file" accept="image/*" name="identifier" id="identifier" required>
                                     </div>
                                 </div>
                                 @error('identifier')

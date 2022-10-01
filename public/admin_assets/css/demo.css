@@ -142,23 +142,19 @@
 }
 
 table {
-    table-layout: fixed;
     width: 100%;
-    display: block;
 }
 
-td {
+td div {
+    max-width: 300px;
     width: 100%;
-    max-width: 400px;
-    word-wrap: break-word;
-    white-space: normal;
 }
 
 .table_img {
     width: 150px;
 }
 
-#evidenceImg {
+#identifier_img {
     width: 100%;
 }
 

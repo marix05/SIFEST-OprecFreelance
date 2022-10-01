@@ -3,6 +3,31 @@
 @section('login')
 
 <div class="container-xxl">
+    @if(session()->has("success"))
+        <div class="bs-toast toast toast-placement-ex m-2 bg-primary top-0 start-50 translate-middle-x show" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="bx bx-bell me-2"></i>
+                <div class="me-auto fw-semibold">Success</div>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                {{ session("success") }}
+            </div>
+        </div>
+    @endif
+    @if(session()->has("error"))
+    <div class="bs-toast toast toast-placement-ex m-2 bg-danger top-0 start-50 translate-middle-x show" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="bx bx-bell me-2"></i>
+            <div class="me-auto fw-semibold">Error</div>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            {{ session("error") }}
+        </div>
+    </div>
+@endif
+
     <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner">
             <!-- Register -->
@@ -31,7 +56,7 @@
                                 id="username"
                                 name="username"
                                 placeholder="Enter your username"
-                                autofocus
+                                autofocus required
                             />
                         </div>
                         <div class="mb-3 form-password-toggle">
@@ -47,7 +72,7 @@
                                     class="form-control"
                                     name="password"
                                     placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                    aria-describedby="password"
+                                    aria-describedby="password" required
                                 />
                                 <span class="input-group-text cursor-pointer"
                                     ><i class="bx bx-hide"></i

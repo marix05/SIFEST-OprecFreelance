@@ -4,28 +4,6 @@
 
 "use strict";
 
-// Data Tablee
-$(document).ready(function () {
-    $("#datatable").DataTable();
-    $("#datatable").parent().parent().addClass("responsive_table");
-
-    $("#datatable2").DataTable();
-    $("#datatable2").parent().parent().addClass("responsive_table");
-});
-
-// Modals
-document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("img_modal_toggle")) {
-        const src = e.target.getAttribute("src");
-        console.log(src);
-        document.querySelector("#evidenceImg").src = src;
-        const evidenceImgModal = new bootstrap.Modal(
-            document.getElementById("evidenceImgModal")
-        );
-        evidenceImgModal.show();
-    }
-});
-
 let menu, animate;
 
 (function () {

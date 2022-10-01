@@ -2,7 +2,7 @@
     <div class="app-brand demo">
         <a href="" class="app-brand-link">
             <span class="app-brand-logo demo">
-                <img src="{{ url("img/logo_sifest.png") }}" alt="" style="width: 40px">
+                <img src="{{ url("img/assets/logo_sifest.png") }}" alt="" style="width: 40px">
             </span>
             <span class="app-brand-text demo menu-text fw-bolder ms-2">SI FEST</span>
         </a>
@@ -54,8 +54,8 @@
             </a>
         </li>
 
-        <li class="menu-item {{ $nav["active"] === "Medpar" ? "active" : "" }}">
-            <a href="{{ url("sifest2022/admin/dashboard/medpar") }}" class="menu-link">
+        <li class="menu-item {{ $nav["active"] === "Media Partner" ? "active" : "" }}">
+            <a href="{{ url("sifest2022/admin/dashboard/media partner") }}" class="menu-link">
                 <div data-i18n="Analytics">Media Partner</div> 
             </a>
         </li>
@@ -72,8 +72,8 @@
             </a>
         </li>
 
-        <li class="menu-item {{ $nav["active"] === "Videography" ? "active" : "" }}">
-            <a href="{{ url("sifest2022/admin/dashboard/videography") }}" class="menu-link">
+        <li class="menu-item {{ $nav["active"] === "Videography Photography" ? "active" : "" }}">
+            <a href="{{ url("sifest2022/admin/dashboard/videography photography") }}" class="menu-link">
                 <div data-i18n="Analytics">Videography & Photography</div> 
             </a>
         </li>

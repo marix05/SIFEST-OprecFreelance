@@ -24,4 +24,10 @@ class Mahasiswa2022 extends Model
             return true;
         } return false;
     }
+
+    public static function getData($NIM) {
+        if (Mahasiswa2022::where('NIM', '=', $NIM)->exists()) {
+            return Mahasiswa2022::where('NIM',"=", $NIM)->first();;
+        } return "";
+    }
 }

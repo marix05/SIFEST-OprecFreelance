@@ -48,8 +48,15 @@ $(document).ready(function () {
 
     $("#password").on("change, keyup", function () {
         let password = $(this).val();
+        let password_confirmation = $("#password_confirmation").val();
         let error_msg = $(this).parent().parent().parent().find(".error_msg p");
+        let error_msg_confirmation = $("#password_confirmation")
+            .parent()
+            .parent()
+            .parent()
+            .find(".error_msg p");
 
+        // regex validation
         if (!/^(.{8,20}$)/.test(password)) {
             error_msg.html("Password must be between 8 to 20 characters long.");
         } else if (!/^(?=.*[A-Z])/.test(password)) {
@@ -62,6 +69,17 @@ $(document).ready(function () {
             error_msg.html("");
         }
 
+        // if password change when password_confirmation is filled
+        if (
+            password !== password_confirmation &&
+            password_confirmation !== ""
+        ) {
+            error_msg_confirmation.html("Password confirmation does not match");
+        } else {
+            error_msg_confirmation.html("");
+        }
+
+        // empty fill
         if (password === "") {
             error_msg.html("");
         }
@@ -72,6 +90,7 @@ $(document).ready(function () {
         let password_confirmation = $(this).val();
         let error_msg = $(this).parent().parent().parent().find(".error_msg p");
 
+        // if password confirmation change when password is filled
         if (password !== password_confirmation) {
             error_msg.html("Password confirmation does not match");
         } else {

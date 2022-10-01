@@ -6,6 +6,30 @@
 <div class="content-wrapper">
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
+        @if(session()->has("success"))
+            <div class="bs-toast toast toast-placement-ex m-2 bg-primary top-0 start-50 translate-middle-x show" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <i class="bx bx-bell me-2"></i>
+                    <div class="me-auto fw-semibold">Success</div>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    {{ session("success") }}
+                </div>
+            </div>
+        @endif
+        @if(session()->has("error"))
+            <div class="bs-toast toast toast-placement-ex m-2 bg-danger top-0 start-50 translate-middle-x show" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <i class="bx bx-bell me-2"></i>
+                    <div class="me-auto fw-semibold">Error</div>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    {{ session("error") }}
+                </div>
+            </div>
+        @endif
 
         <div class="row">
             <div class="col-lg-12 mb-4 order-0">
@@ -17,7 +41,7 @@
                                     Semangat Admin Open Recruitment Freelance SI FEST 2022! 🎉
                                 </h5>
                                 <p class="mb-4">
-                                    Saat ini sudah ada <span class="fw-bold">50</span> akun yang terdaftar di website ini
+                                    <span class="fw-bold text-primary fs-2">{{ $users->count() }}</span> orang telah terdaftar menjadi calon freelancer
                                 </p>
 
                                 <a
@@ -55,55 +79,37 @@
                                 <tr>
                                     <th class="text-center">Name</th>
                                     <th class="text-center">NIM</th>
-                                    <th class="text-center">Domicile</th>
-                                    <th class="text-center">KPM/KRS</th>
+                                    <th class="text-center">Line</th>
                                     <th class="text-center">First Choice</th>
                                     <th class="text-center">Second Choice</th>
-                                    <th class="text-center">Wawancara</th>
+                                    <th class="text-center">KPM/KRS</th>
+                                    <th class="text-center">Interview</th>
                                     <th class="text-center">Action</th>
 
                                 </tr>
                             </thead>
                             <tbody class="table-border-bottom-0">
-                                <tr>
-                                    <!-- Name  -->
-                                    <td>
-                                        <i class="fab fa-angular fa-lg me-3"></i>
-                                        <strong>Albert Cook</strong>
-                                    </td>
-                                    <!-- NIM -->
-                                    <td>Aaaa@gmail.com</td>
-                                    <!-- Domicilie -->
-                                    <td>
-                                        <a href="https://wa.me/0812312321" target="_blank">628321312</a>
-                                    </td>
-                                    <!-- KPM/KRS -->
-                                    <td class="text-center">
-                                        <img src="{{ asset("img/assets/qr_oprec_line.png") }}" alt="" class="table_img img_modal_toggle">
-                                    </td>
-                                    <!-- First Choice -->
-                                    <td>Universitas Sriwijaya Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, culpa?</td>
-                                    <!-- Second Choice -->
-                                    <td>2020-05-12</td>
-                                    <!-- Wawancar -->
-                                    <td>Palembang</td>
-                                    <!-- Action -->
-                                    <td>
-                                        <div class="d-flex flex-column gap-2">
-
-                                            <button
-                                                type="button"
-                                                class="btn btn-warning d-flex align-items-center"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#editModal"
-                                            >
-                                                <i class='bx bx-edit-alt me-1'></i> Edit
-                                            </button>
-
-                                            
-                                        </div>
-                                    </td>
-                                </tr>
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td><div>{{ $user['name'] }}</div></td>
+                                        <td><div>{{ $user['NIM'] }}</div></td>
+                                        <td><div><a href="https://line.me/R/ti/p/{{ $user['line'] }}" target="_blank">{{ $user['line'] }}</a></div></td>
+                                        <td><div>{{ $user['first_choice'] }}</div></td>
+                                        <td><div>{{ $user['second_choice'] }}</div></td>
+                                        <td><div class="text-center"><img src="/KRS_KPM/{{ $user['identifier'] }}" class="table_img img_modal_toggle"></div></td>
+                                        <td><div>{{ $user['interview'] }}</div></td>
+                                        <td>
+                                            <div class="d-flex flex-column gap-2">
+                                                <button value={{ $user['id'] }} class="btn btn-warning edit_btn_modal d-flex align-items-center">
+                                                    <i class='bx bx-edit-alt me-1'></i> Edit
+                                                </button>
+                                                <button value={{ $user['id'] }} class="btn btn-danger delete_btn_modal d-flex align-items-center">
+                                                    <i class='bx bx-trash-alt me-1'></i> Delete
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -116,7 +122,8 @@
     <!-- / Content -->
 </div>
 
-<div class="modal fade" id="evidenceImgModal" tabindex="-1" aria-hidden="true">
+
+<div class="modal fade" id="identifier_img_modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -130,7 +137,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col">
-                        <img id="evidenceImg" src="" alt="" />
+                        <img id="identifier_img" src="" alt="" />
                     </div>
                 </div>
             </div>
@@ -138,10 +145,11 @@
     </div>
 </div>
 
-<div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="delete_modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
+                <h5 class="modal-title">Delete User Data (Khusus Admin Inti dan Utama)</h5>
                 <button
                     type="button"
                     class="btn-close"
@@ -150,33 +158,82 @@
                 ></button>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="{{ route('delete_data') }}" method="post" autocomplete="off">
+                    @csrf
+                    @method('delete')
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="delete_name">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="name" class="form-control" id="delete_name" readonly required/>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="delete_NIM">NIM</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="NIM" class="form-control" id="delete_NIM" readonly required/>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-danger d-flex align-items-center">
+                            <i class='bx bx-trash-alt me-1'></i> Delete
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit_modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit User Data (Khusus Admin Inti dan Utama)</h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route("edit_data") }}" method="post" autocomplete="off">
                     @csrf
                     <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label" for="basic-default-name">Name</label>
+                        <label class="col-sm-2 col-form-label" for="edit_name">Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="basic-default-name" placeholder="John Doe" />
+                            <input type="text" name="name" class="form-control" id="edit_name" readonly required/>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label" for="basic-default-message">Message</label>
+                        <label class="col-sm-2 col-form-label" for="edit_NIM">NIM</label>
                         <div class="col-sm-10">
-                            <textarea
-                            id="basic-default-message"
-                            class="form-control"
-                            placeholder="Hi, Do you have a moment to talk Joe?"
-                            aria-label="Hi, Do you have a moment to talk Joe?"
-                            aria-describedby="basic-icon-default-message2"
-                            ></textarea>
+                            <input type="text" name="NIM" class="form-control" id="edit_NIM" readonly required/>
                         </div>
                     </div>
-
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="edit_interview">Interview</label>
+                        <div class="col-sm-10">
+                            <select name="interview" class="form-select" aria-label="Default select example" id="edit_interview" readonly required>
+                                <option value="Indralaya">Indralaya</option>
+                                <option value="Palembang">Palembang</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="edit_password">New Password</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="password" class="form-control" id="edit_password"/>
+                            <div class="error_msg">
+                                <p class="ms-2 text-danger fs-6"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="d-flex justify-content-end">
-                        <button
-                            type="submit"
-                            class="btn btn-warning d-flex align-items-center"
-                        >
-                            <i class='bx bx-edit-alt me-1'></i> edit
+                        <button type="submit" class="btn btn-warning d-flex align-items-center">
+                            <i class='bx bx-edit-alt me-1'></i> Save Change
                         </button>
                     </div>
                 </form>

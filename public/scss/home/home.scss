@@ -9,3 +9,71 @@ section.register {
         align-items: center;
     }
 }
+
+section.login {
+    .wrapper {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.logo {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+
+    img {
+        width: 65px;
+        height: 65px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .logo {
+        img {
+            width: 55px;
+            height: 55px;
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .logo {
+        img {
+            width: 45px;
+            height: 45px;
+        }
+    }
+}
+
+.nav_arrow {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    color: var(--darkgrey-color);
+    -moz-animation: nav_arrow 2s infinite;
+    -webkit-animation: nav_arrow 2s infinite;
+    animation: nav_arrow 2s infinite;
+}
+
+@keyframes nav_arrow {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translate(-50%, 0);
+    }
+    40% {
+        transform: translate(-50%, -30px);
+    }
+    60% {
+        transform: translate(-50%, -15px);
+    }
+}

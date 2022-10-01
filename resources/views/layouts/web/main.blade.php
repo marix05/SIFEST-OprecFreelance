@@ -52,7 +52,7 @@
             <script src="{{ url("js/dashboard/dashboard.js") }}"></script>
         @endif
         
-        @if ($nav["active"] === "Register" || $nav["active"] === "Home")
+        @if ($nav["active"] === "Register" || $nav["active"] === "Home" || $nav['active'] === "Dashboard")
             <script src="{{ url("js/register/register.js") }}"></script>
         @endif
         

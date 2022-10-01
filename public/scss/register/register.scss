@@ -1,1 +1,10 @@
-@use "../form";
+@use "../assets/form";
+
+@media only screen and (max-width: 390px) {
+    .input_radio {
+        .radio_btn {
+            max-width: unset;
+            width: 100%;
+        }
+    }
+}

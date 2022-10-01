@@ -22,10 +22,9 @@
 >
     <head>
         <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+        <meta http-equiv="refresh" content="{{ config('session.lifetime') * 60 }}">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ $title }}</title>
 
@@ -35,7 +34,7 @@
         <link
             rel="icon"
             type="image/x-icon"
-            href="{{ url("img/logo_sifest.png") }}"
+            href="{{ url("img/assets/logo_sifest.png") }}"
         />
 
         <!-- Fonts -->
@@ -208,22 +207,23 @@
 
         <!-- Core JS -->
         <!-- build:js admin_assets/vendor/js/core.js -->
-        <script src="{{ url("admin_assets/vendor/libs/jquery/jquery.js") }}"></script>
-        <script src="{{ url("admin_assets/vendor/libs/popper/popper.js") }}"></script>
-        <script src="{{ url("admin_assets/vendor/js/bootstrap.js") }}"></script>
-        <script src="{{ url("admin_assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js") }}"></script>
-        <script src="{{ url("admin_assets/vendor/js/menu.js") }}"></script>
+        <script src="{{ asset("admin_assets/vendor/libs/jquery/jquery.js") }}"></script>
+        <script src="{{ asset("admin_assets/vendor/libs/popper/popper.js") }}"></script>
+        <script src="{{ asset("admin_assets/vendor/js/bootstrap.js") }}"></script>
+        <script src="{{ asset("admin_assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js") }}"></script>
+        <script src="{{ asset("admin_assets/vendor/js/menu.js") }}"></script>
         <!-- endbuild -->
         
         <!-- Vendors JS -->
-        <script src="{{ url("admin_assets/vendor/libs/apex-charts/apexcharts.js") }}"></script>
-        <script src="{{ url("vendor/datatables/datatables.min.js") }}"></script>
+        <script src="{{ asset("admin_assets/vendor/libs/apex-charts/apexcharts.js") }}"></script>
+        <script src="{{ asset("vendor/datatables/datatables.min.js") }}"></script>
         
         <!-- Main JS -->
-        <script src="{{ url("admin_assets/js/main.js") }}"></script>
+        <script src="{{ asset("admin_assets/js/main.js") }}"></script>
+        <script src="{{ asset("admin_assets/js/crud.js") }}"></script>
 
         <!-- Page JS -->
-        <script src="{{ url("admin_assets/js/dashboards-analytics.js") }}"></script>
+        <script src="{{ asset("admin_assets/js/dashboards-analytics.js") }}"></script>
 
         <!-- Place this tag in your head or just before your close body tag. -->
         <script async defer src="https://buttons.github.io/buttons.js"></script>

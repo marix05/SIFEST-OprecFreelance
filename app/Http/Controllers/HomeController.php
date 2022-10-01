@@ -14,6 +14,7 @@ class HomeController extends Controller
         if (Session::get('NIM')) {
             return redirect()->route('register');
         }
+        
         $data = [
             "title" => "Oprec Freelance | SI FEST",
             "nav" => [
@@ -32,6 +33,7 @@ class HomeController extends Controller
 
         if(Mahasiswa2022::validateNIM($request->NIM)) {
             Session::put('NIM', $request->NIM);
+            
             $request->session()->regenerate();
             return redirect()->intended('/register')->with("success", "Successful, now complete your registration");
         } 

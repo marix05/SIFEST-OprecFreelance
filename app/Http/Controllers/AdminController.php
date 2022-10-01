@@ -34,7 +34,7 @@ class AdminController extends Controller
             "password" => $request->password,
         ])) {
             $request->session()->regenerate();
-            return redirect()->intended('/sifest2022/admin/dashboard');
+            return redirect()->intended('/sifest2022/admin/dashboard')->with("success", "Semangat Panitia !!");
         }
 
         return back()->with("error", "Login Failed, Incorrect Username or Password");

@@ -28,11 +28,7 @@ class RedirectIfAuthenticated
                     //user was authenticated with admin guard.
                     return redirect()->route('admin_dashboard');
                 } 
-                
-                if($guard == "mahasiswa2022"){
-                    return redirect()->route('register');
-                } 
-                
+
                 return redirect(RouteServiceProvider::HOME);
             }
         }

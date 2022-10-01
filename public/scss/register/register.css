@@ -238,4 +238,11 @@ select option {
 .type_tabs .form_tab.active,
 .type_tabs .type_tab.active {
   display: block;
+}
+
+@media only screen and (max-width: 390px) {
+  .input_radio .radio_btn {
+    max-width: unset;
+    width: 100%;
+  }
 }/*# sourceMappingURL=register.css.map */
